@@ -1,0 +1,29 @@
+// a simple flatbuffers file for namespace testing
+
+namespace rpc.ns1;
+
+struct MyStruct1 {}
+
+enum MyEnum1 : int {
+	EnumType1 = 0,
+	EnumType2,
+}
+
+namespace rpc.ns2;
+
+struct MyStruct1 {}
+
+table MyTable1 {
+  myfield1 : ns1.MyEnum1;
+  myfield2 : MyStruct1;
+}
+
+rpc_service MyService1 {
+  MyMethod1(MyTable1) : ns3.MyTable2;
+}
+
+namespace rpc.ns3;
+
+table MyTable2 {
+  myfield1 : ns1.MyStruct1;
+}

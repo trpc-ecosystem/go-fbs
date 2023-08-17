@@ -1,0 +1,6 @@
+table MyTable {
+  myfield:ServiceName;
+}
+rpc_service ServiceName {
+  Method(InputType):OutputType;
+}

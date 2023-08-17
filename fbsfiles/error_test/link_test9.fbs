@@ -1,0 +1,4 @@
+rpc_service MyService {
+  DuplicateMethod(InputType):OutputType;
+  DuplicateMethod(InputType):OutputType;
+}

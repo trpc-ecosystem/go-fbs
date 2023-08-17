@@ -1,0 +1,5 @@
+table InputType {}
+enum OutputType : int {}
+rpc_service MyService{
+  Method(InputType):OutputType;
+}

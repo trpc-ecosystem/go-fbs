@@ -1,0 +1,5 @@
+namespace mynamespace;
+table InputType {}
+rpc_service MyService{
+  Method(InputType):mynamespace;
+}

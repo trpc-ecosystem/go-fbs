@@ -1,0 +1,103 @@
+// A test .fbs file which contains almost all use cases 
+// with grammar annotated alongside.
+// For meanings of each field, see 
+// https://google.github.io/flatbuffers/flatbuffers_guide_writing_schema.html
+
+// grammar: include
+// Include StrLit ';'
+include "include_test1.fbs";
+
+// grammar: namespaceDecl
+// Namespace idents ';'
+namespace rpc.app.server;
+
+// grammar: attrDecl
+// Attribute Ident ';'
+attribute "myattr"; // can be used in metadata, see tag #1
+
+// grammar: enumDecl 
+// Enum Ident ':' typeName metadata '{' enumVals '}'
+enum MyEnum:ubyte (bit_flags) {
+  // grammar: enumVal
+  // Ident '=' intLit
+  Red = 0,
+  // Ident
+  Green,
+  Blue = 3,
+}
+
+// grammar: union 
+// Union Ident metadata '{' unionVals '}'
+union Any { Monster, MyStruct }
+// Union Ident metadata '{' unionVals '}'
+union AnyUniqueAliases { 
+  // grammar: unionVal
+  // Ident ':' typeName
+  M: MyTable, 
+  M2: MyStruct
+}
+
+// grammar: tableDecl 
+// Table Ident metadata '{' fields '}'
+table Monster (private) {
+  // grammar: field 
+  // Ident ':' typeName metadata ';'
+  pos:int (id: 0);
+  // Ident ':' typeName '=' scalar metadata ';'
+  hp:short = 100 (id: 1);
+    // grammar: typeName
+    // '[' typeLit ']' represents vector of types
+  inventory:[ubyte] (id: 2);
+  // Ident ':' typeName '=' scalar metadata ';'
+    // grammar: typeName
+	// typeLit 
+	            // grammar: scalar
+	            // boolLit 
+  friendly:bool = false (deprecated, myattr: 1, id: 3); // tag #1
+}
+
+table Stat {} // Empty table/struct is allowed.
+
+// grammar: structDecl (the difference between `struct` and `table` see 
+// https://google.github.io/flatbuffers/flatbuffers_guide_writing_schema.html)
+// Struct Ident metadata '{' fields '}'
+struct MyStruct (force_align: 8) {
+  // grammar: field
+  // Ident ':' typeName metadata ';'
+  id:uint(key);
+  // Ident ':' typeName metadata ';' // Note: metadata could be nil
+  x:float;
+}
+
+// grammar: rpcDecl
+// RPCService Ident '{' rpcMethods '}'
+rpc_service MyService {
+  // grammar: rpcMethod 
+  // Ident '(' Ident ')' ':' Ident metadata ';' // Note: metadata could be nil
+  Store(Monster):Stat (streaming: "none");
+      // grammar: metadata
+	  // '(' metadataEntries ')'
+	      // grammar: metadataEntry
+		  // Ident ':' singleVal
+		  // Ident
+  Retrieve(Stat):Monster (streaming: "server", idempotent);
+  GetMaxHitPoint(Monster):Stat (streaming: "client");
+  GetMinMaxHitPoints(Monster):Stat (streaming: "bidi");
+  RPCMethod1(test1.MyTestFile):Stat;
+}
+
+// The meanings of declarations below refer to:
+// https://google.github.io/flatbuffers/flatbuffers_guide_writing_schema.html
+
+// grammar: rootDecl
+// RootType Ident ';'
+root_type Monster;
+
+// grammar: fileIdentDecl
+// FileIdentifier StrLit ';'
+file_identifier "FIDT";
+
+// grammar: fileExtDecl
+// FileExtension StrLit ';'
+file_extension "fid";
+

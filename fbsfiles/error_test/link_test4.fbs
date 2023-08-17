@@ -1,0 +1,4 @@
+struct MyStruct {
+	duplicatefield:int;
+	duplicatefield:int;
+}

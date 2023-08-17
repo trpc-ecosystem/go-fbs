@@ -1,0 +1,4 @@
+namespace mynamespace;
+table MyTable {
+  myfield:mynamespace;
+}

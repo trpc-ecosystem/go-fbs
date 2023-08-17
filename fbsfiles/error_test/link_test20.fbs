@@ -1,0 +1,6 @@
+namespace mynamespace;
+table InputType {}
+enum OutputType : int {}
+rpc_service MyService{
+  Method(.mynamespace.InputType):OutputType;
+}

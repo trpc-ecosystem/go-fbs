@@ -1,0 +1,4 @@
+
+namespace test1;
+
+table MyTestFile {}

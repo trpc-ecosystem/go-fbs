@@ -1,0 +1,6 @@
+rpc_service DuplicateServiceName {
+  Method(InputType):OutputType;
+}
+rpc_service DuplicateServiceName {
+  Method(InputType):OutputType;
+}

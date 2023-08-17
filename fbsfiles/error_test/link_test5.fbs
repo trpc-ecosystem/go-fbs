@@ -1,0 +1,2 @@
+enum DuplicateEnum : int {}
+enum DuplicateEnum : int {}

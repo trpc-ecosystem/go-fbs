@@ -1,0 +1,7 @@
+struct DuplicateStructName {
+	field1:int;
+}
+
+struct DuplicateStructName {
+	field2:int;
+}

@@ -1,0 +1,3 @@
+enum testenum:byte{
+	Test = -1,
+}

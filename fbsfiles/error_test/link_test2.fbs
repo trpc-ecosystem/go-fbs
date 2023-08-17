@@ -1,0 +1,4 @@
+table MyTable {
+	duplicatefield:int;
+	duplicatefield:int;
+}

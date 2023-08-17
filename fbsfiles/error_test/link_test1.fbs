@@ -1,0 +1,7 @@
+table DuplicateTableName {
+	field1:int;
+}
+
+table DuplicateTableName {
+	field2:int;
+}

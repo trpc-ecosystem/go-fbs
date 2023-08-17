@@ -1,0 +1,20 @@
+
+
+	.666 .app .7.6 .9e2 .9e-2 .9EF .9F true 1ee 1e1e
+
+	0xff 0xzz 00 0.9 18446744073709551616 
+
+	'a simple string literal'
+
+	"\xef \177 -\u0414- \U0001f602"
+
+	"\a \b \f \n \r \v \\ \' \" \? "
+
+	// line comment 
+	/* block 
+	 * of comments
+	 */ /* inline comments */ 
+	
+	struct {}   /
+
+	.

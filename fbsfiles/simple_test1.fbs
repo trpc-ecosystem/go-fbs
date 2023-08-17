@@ -1,0 +1,39 @@
+// a simple flatbuffers test file.
+
+namespace mynamespace;
+
+attribute "myattr";
+
+enum MyEnum : int {
+  Red = 0,
+  Green,
+  Blue = 3,
+}
+
+union Any { MyTable1, MyTable2 }
+
+table MyTable1 {
+  myfield1 : int;
+  myfield2 : int;
+}
+
+table MyTable2 {
+  myfield1 : short;
+  myfield2 : short;
+}
+
+struct MyEmptyStruct {}
+
+rpc_service MyService1 {
+  MyMethod1(MyTable1) : MyTable2;
+  MyMethod2(MyTable1) : MyTable2 (streaming: "none");
+  MyMethod3(MyTable1) : MyTable2 (streaming: "client");
+  MyMethod4(MyTable1) : MyTable2 (streaming: "server");
+  MyMethod5(MyTable1) : MyTable2 (streaming: "bidi");
+}
+
+root_type MyTable1;
+
+file_identifier "FIDT";
+
+file_extension "fid";
