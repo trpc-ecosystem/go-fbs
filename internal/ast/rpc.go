@@ -1,13 +1,26 @@
+//
+//
+// Tencent is pleased to support the open source community by making tRPC available.
+//
+// Copyright (C) 2023 THL A29 Limited, a Tencent company.
+// All rights reserved.
+//
+// If you have downloaded a copy of the tRPC source code from Tencent,
+// please note that tRPC source code is licensed under the Apache 2.0 License,
+// A copy of the Apache 2.0 License is included in this file.
+//
+//
+
 package ast
 
 // RPCDeclNode represents a rpc service statement. Example:
 //
-// rpc_service MonsterStorage {
-//   Store(Monster):Stat (streaming: "none");
-//   Retrieve(Stat):Monster (streaming: "server", idempotent);
-//   GetMaxHitPoint(Monster):Stat (streaming: "client");
-//   GetMinMaxHitPoints(Monster):Stat (streaming: "bidi");
-// }
+//	rpc_service MonsterStorage {
+//	  Store(Monster):Stat (streaming: "none");
+//	  Retrieve(Stat):Monster (streaming: "server", idempotent);
+//	  GetMaxHitPoint(Monster):Stat (streaming: "client");
+//	  GetMinMaxHitPoints(Monster):Stat (streaming: "bidi");
+//	}
 type RPCDeclNode struct {
 	compositeNode
 	Keyword    *KeywordNode
@@ -40,12 +53,12 @@ func NewRPCDeclNode(keyword *KeywordNode, name *IdentNode, openBrace *RuneNode,
 
 // RPCMethodNode represents a method inside an rpc service. Examples:
 //
-//  Store(Monster):Stat (streaming: "none");
-//  Retrieve(Stat):Monster (streaming: "server", idempotent);
-//  GetMaxHitPoint(Monster):Stat (streaming: "client");
-//  GetMinMaxHitPoints(Monster):Stat (streaming: "bidi");
-//  SayHello(HelloRequest):HelloReply;
-//  SayManyHellos(HelloRequest):HelloReply (streaming: "server");
+//	Store(Monster):Stat (streaming: "none");
+//	Retrieve(Stat):Monster (streaming: "server", idempotent);
+//	GetMaxHitPoint(Monster):Stat (streaming: "client");
+//	GetMinMaxHitPoints(Monster):Stat (streaming: "bidi");
+//	SayHello(HelloRequest):HelloReply;
+//	SayManyHellos(HelloRequest):HelloReply (streaming: "server");
 type RPCMethodNode struct {
 	compositeNode
 	Name       *IdentNode

@@ -1,11 +1,23 @@
+//
+//
+// Tencent is pleased to support the open source community by making tRPC available.
+//
+// Copyright (C) 2023 THL A29 Limited, a Tencent company.
+// All rights reserved.
+//
+// If you have downloaded a copy of the tRPC source code from Tencent,
+// please note that tRPC source code is licensed under the Apache 2.0 License,
+// A copy of the Apache 2.0 License is included in this file.
+//
+//
+
 package ast
 
 // TableDeclNode represents table definition in flatbuffers using 'table'. Example:
 //
-// table HelloRequest {
-//   name:string;
-// }
-//
+//	table HelloRequest {
+//	  name:string;
+//	}
 type TableDeclNode struct {
 	compositeNode
 	Keyword    *KeywordNode
