@@ -1,3 +1,16 @@
+//
+//
+// Tencent is pleased to support the open source community by making tRPC available.
+//
+// Copyright (C) 2023 THL A29 Limited, a Tencent company.
+// All rights reserved.
+//
+// If you have downloaded a copy of the tRPC source code from Tencent,
+// please note that tRPC source code is licensed under the Apache 2.0 License,
+// A copy of the Apache 2.0 License is included in this file.
+//
+//
+
 // Package ast provides definitions for nodes' types of
 // the constructed abstract syntax tree.
 //
@@ -17,56 +30,58 @@
 //
 // Production rules can be summarized by the following trees (partially):
 //
-//                      schema (*SchemaNode) (this is the root of the AST)
-//                      /                 \
-//  includes ([]*IncludeNode)             decls ([]DeclElement)
-//       /   ..   \                           /    ..    \
+//	                    schema (*SchemaNode) (this is the root of the AST)
+//	                    /                 \
+//	includes ([]*IncludeNode)             decls ([]DeclElement)
+//	     /   ..   \                           /    ..    \
+//
 // include (*IncludeNode)                  decl (DeclElement)
-//                                                 |
-//         namespaceDecl or tableDecl or structDecl or enumDecl or unionDecl or
-//           rootDecl or fileExtDecl or fileIdentDecl or attrDecl or rpcDecl
+//
+//	                                               |
+//	       namespaceDecl or tableDecl or structDecl or enumDecl or unionDecl or
+//	         rootDecl or fileExtDecl or fileIdentDecl or attrDecl or rpcDecl
 //
 //
-//                    tableDecl (*TableDeclNode)
-//                  /   |     |       |    |    \
-//            Table Ident metadata '{' fields '}'
-//                                       / .. \
-//                                 field (*FieldNode)
+//	                  tableDecl (*TableDeclNode)
+//	                /   |     |       |    |    \
+//	          Table Ident metadata '{' fields '}'
+//	                                     / .. \
+//	                               field (*FieldNode)
 //
 //
-//                     enumDecl (*EnumDeclNode)
-//           /     |    |     |        |      |     |     \
-//        Enum Ident ':' typeName metadata '{' enumVals '}'
+//	                   enumDecl (*EnumDeclNode)
+//	         /     |    |     |        |      |     |     \
+//	      Enum Ident ':' typeName metadata '{' enumVals '}'
 //
 //
-//                      rpcDecl (*RPCDeclNode)
-//                  /        |    |       |     \
-//           RPCService Ident '{' rpcMethods '}'
-//                                    /  ..  \
-//                           rpcMethod (*RPCMethodNode)
-//                      / |     |    |   |     |      |     \
-//                Ident '(' Ident ')' ':' Ident metadata ';'
+//	                    rpcDecl (*RPCDeclNode)
+//	                /        |    |       |     \
+//	         RPCService Ident '{' rpcMethods '}'
+//	                                  /  ..  \
+//	                         rpcMethod (*RPCMethodNode)
+//	                    / |     |    |   |     |      |     \
+//	              Ident '(' Ident ')' ':' Ident metadata ';'
 //
 //
-//          metadata (*MetadataNode)  (metadata could be nil)
-//            /                   |                    \
-//          '(' metadataEntries ([]*MetadataEntryNode) ')'
-//                            /  ..  \
-//               metadataEntry (*MetadataEntryNode)
-//                    /          |         \
-//                 Ident       ':'        singleVal (ValueNode)
+//	        metadata (*MetadataNode)  (metadata could be nil)
+//	          /                   |                    \
+//	        '(' metadataEntries ([]*MetadataEntryNode) ')'
+//	                          /  ..  \
+//	             metadataEntry (*MetadataEntryNode)
+//	                  /          |         \
+//	               Ident       ':'        singleVal (ValueNode)
 //
 //
-//                           singleVal (ValueNode)
-//                                     |
-//                scalar (ValueNode)  or  StrLit (*StringLiteralNode)
-//                           |
-//         boolLit    or    intLit    or  floatLit
-//   (*BoolLiteralNode)  (IntValueNode)  (FloatValueNode)
-//          |                  |                    \
-//  True or False       (*UintLiteralNode)        (*FloatLiteralNode)
-//  (*IdentNode)    (*NegativeIntLiteralNode)    (*SpecialFloatLiteralNode)
-//                  (*PositiveUintLiteralNode)   (*SignedFloatLiteralNode)
+//	                         singleVal (ValueNode)
+//	                                   |
+//	              scalar (ValueNode)  or  StrLit (*StringLiteralNode)
+//	                         |
+//	       boolLit    or    intLit    or  floatLit
+//	 (*BoolLiteralNode)  (IntValueNode)  (FloatValueNode)
+//	        |                  |                    \
+//	True or False       (*UintLiteralNode)        (*FloatLiteralNode)
+//	(*IdentNode)    (*NegativeIntLiteralNode)    (*SpecialFloatLiteralNode)
+//	                (*PositiveUintLiteralNode)   (*SignedFloatLiteralNode)
 //
 // Note: types without '*' are all `interface`s.
 package ast

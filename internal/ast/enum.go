@@ -1,16 +1,29 @@
+//
+//
+// Tencent is pleased to support the open source community by making tRPC available.
+//
+// Copyright (C) 2023 THL A29 Limited, a Tencent company.
+// All rights reserved.
+//
+// If you have downloaded a copy of the tRPC source code from Tencent,
+// please note that tRPC source code is licensed under the Apache 2.0 License,
+// A copy of the Apache 2.0 License is included in this file.
+//
+//
+
 package ast
 
 // EnumDeclNode represents enumerations in flatbuffers.
 // Keyword is 'enum'. Example:
 //
-// enum Color:ubyte (bit_flags) {
-//   Red = 0, // color Red = (1u << 0)
-//   /// \brief color Green
-//   /// Green is bit_flag with value (1u << 1)
-//   Green,
-//   /// \brief color Blue (1u << 3)
-//   Blue = 3,
-// }
+//	enum Color:ubyte (bit_flags) {
+//	  Red = 0, // color Red = (1u << 0)
+//	  /// \brief color Green
+//	  /// Green is bit_flag with value (1u << 1)
+//	  Green,
+//	  /// \brief color Blue (1u << 3)
+//	  Blue = 3,
+//	}
 type EnumDeclNode struct {
 	compositeNode
 	Keyword    *KeywordNode

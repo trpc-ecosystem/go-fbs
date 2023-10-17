@@ -1,13 +1,26 @@
+//
+//
+// Tencent is pleased to support the open source community by making tRPC available.
+//
+// Copyright (C) 2023 THL A29 Limited, a Tencent company.
+// All rights reserved.
+//
+// If you have downloaded a copy of the tRPC source code from Tencent,
+// please note that tRPC source code is licensed under the Apache 2.0 License,
+// A copy of the Apache 2.0 License is included in this file.
+//
+//
+
 package ast
 
 // MetadataNode represents metadata information of type or identifier.
 // Usually when you see parentheses, you encounter metadata. Example:
 //
-// table Referrable {
-//   id:ulong(key, hash:"fnv1a_64");
-//           ^^^^^^^^^^^^^^^^^^^^^^
-//   //        these are metadata
-// }
+//	table Referrable {
+//	  id:ulong(key, hash:"fnv1a_64");
+//	          ^^^^^^^^^^^^^^^^^^^^^^
+//	  //        these are metadata
+//	}
 type MetadataNode struct {
 	compositeNode
 	OpenParen  *RuneNode
@@ -33,11 +46,11 @@ func NewMetadataNode(openParen *RuneNode, entries []*MetadataEntryNode, closePar
 // MetadataEntryNode represents an entry of metadata. It can be a key-value pair
 // or just key. Example:
 //
-// table Referable {
-//   id:ulong(key, hash:"fnv1a_64");
-//            ^^^  ^^^^^^^^^^^^^^^
-//   //     entry1     entry2
-// }
+//	table Referable {
+//	  id:ulong(key, hash:"fnv1a_64");
+//	           ^^^  ^^^^^^^^^^^^^^^
+//	  //     entry1     entry2
+//	}
 type MetadataEntryNode struct {
 	compositeNode
 	Key   *IdentNode
