@@ -8,7 +8,7 @@ title: "affected/package: "
 Please answer these questions before submitting your issue. Thanks!
 -->
 
-### What version of tRPC-Go are you using?
+### What version of trpc-go-fbs are you using?
 
 
 ### Does this issue reproduce with the latest release?
