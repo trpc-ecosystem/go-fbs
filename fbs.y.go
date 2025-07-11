@@ -17,11 +17,12 @@
 
 package fbs
 
-import (
-	__yyfmt__ "fmt"
+import __yyfmt__ "fmt"
 
-	"trpc.group/trpc-go/fbs/internal/ast"
-) //line fbs.y:35
+//line fbs.y:35
+
+import "trpc.group/trpc-go/fbs/internal/ast"
+
 //line fbs.y:41
 type fbsSymType struct {
 	yys    int
