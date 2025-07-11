@@ -2,7 +2,7 @@
 //
 // Tencent is pleased to support the open source community by making tRPC available.
 //
-// Copyright (C) 2023 THL A29 Limited, a Tencent company.
+// Copyright (C) 2023 Tencent.
 // All rights reserved.
 //
 // If you have downloaded a copy of the tRPC source code from Tencent,
@@ -17,12 +17,11 @@
 
 package fbs
 
-import __yyfmt__ "fmt"
+import (
+	__yyfmt__ "fmt"
 
-//line fbs.y:35
-
-import "trpc.group/trpc-go/fbs/internal/ast"
-
+	"trpc.group/trpc-go/fbs/internal/ast"
+) //line fbs.y:35
 //line fbs.y:41
 type fbsSymType struct {
 	yys    int
